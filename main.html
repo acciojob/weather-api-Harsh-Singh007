@@ -3,39 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <button id="getWeatherBtn">Get Current Weather</button>
-  <div id="weatherData" style="margin-top: 20px; font-weight: bold;"></div>
+  <div class="container">
+    <button id="getWeatherBtn">Get Current Weather</button>
+    <div id="weatherData"></div>
+  </div>
 
-  <script>
-    document.getElementById('getWeatherBtn').addEventListener('click', function () {
-      const apiKey = "YOUR_API_KEY"; // Replace with your OpenWeatherMap API key
-      const city = "London";
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-
-      fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch weather data.");
-        }
-        return response.json();
-      })
-      .then(data => {
-        const weather = data.weather[0].main;
-        document.getElementById('weatherData').textContent = `Current weather in London: ${weather}`;
-      })
-      .catch(error => {
-        document.getElementById('weatherData').textContent = "Error: " + error.message;
-      });
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
